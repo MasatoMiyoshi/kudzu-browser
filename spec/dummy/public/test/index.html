@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>index.html</title>
+</head>
+<body>
+  <ul class="html">
+    <li><a href="html1.html">html1</a></li>
+    <li><a href="html2.html" target="_blank">html2</a></li>
+  </ul>
+  <ul class="html-iframe">
+    <li><iframe src="iframe1.html">iframe1</iframe></li>
+    <li><iframe src="iframe2.html">iframe2</iframe></li>
+  </ul>
+  <ul class="html-variation">
+    <li><a href="#top">#top</a></li>
+    <li><a href="html/html4.01.html">html4.01</a></li>
+    <li><a href="html/xhtml1.0.html">xhtml1.0</a></li>
+    <li><a href="html/nofollow.html" rel="nofollow">nofollow</a></li>
+  </ul>
+  <ul class="html-multibyte">
+    <li><a href="テスト/！”＃＄％＆’（）＝～｜‘｛＋＊｝＜＞？＿－＾￥＠「；：」、。・￥.html">！”＃＄％＆’（）＝～｜‘｛＋＊｝＜＞？＿－＾￥＠「；：」、。・￥.html</a></li>
+    <li><a href="テスト/１２３４５６７８９０.html">１２３４５６７８９０.html</a></li>
+  </ul>
+  <ul class="xml">
+    <li><a href="xml/rss.xml">rss</a></li>
+    <li><a href="xml/atom.xml">atom</a></li>
+  </ul>
+  <ul class="text">
+    <li><a href="files/text1.txt">text1</a></li>
+    <li><a href="files/text2.txt">text2</a></li>
+  </ul>
+  <ul class="jpeg">
+    <li><a href="files/jpeg1.jpg">jpeg1</a></li>
+    <li><a href="files/jpeg2.jpg">jpeg2</a></li>
+  </ul>
+  <ul class="bin">
+    <li><a href="files/bin1.bin">bin1</a></li>
+    <li><a href="files/bin2.bin">bin2</a></li>
+  </ul>
+  <ul class="img">
+    <li><img src="files/jpeg1.jpg" alt="Lenna"></li>
+    <li><img src="files/jpeg2.jpg" alt="Mandrill"></li>
+  </ul>
+  <ul class="charset">
+    <!-- japanese -->
+    <li><a href="charset/shift_jis.html">shift_jis</a></li>
+    <li><a href="charset/cp932.html">cp932</a></li>
+    <li><a href="charset/euc-jp.html">euc-jp</a></li>
+    <li><a href="charset/cp51932.html">cp51932</a></li>
+    <li><a href="charset/eucjp-ms.html">eucjp-ms</a></li>
+    <!-- chinese -->
+    <li><a href="charset/big5.html">big5</a></li>
+    <li><a href="charset/gb2312.html">gb2312</a></li>
+    <!-- korean -->
+    <li><a href="charset/euc-kr.html">euc-kr</a></li>
+    <!-- latin -->
+    <li><a href="charset/iso-8859-1_irish.html">iso-8859-1 (irish)</a></li>
+    <li><a href="charset/iso-8859-2_albanian.html">iso-8859-2 (albanian)</a></li>
+    <!-- unknown -->
+    <li><a href="charset/none.html">none</a></li>
+    <li><a href="charset/unknown.html">unknown</a></li>
+  </ul>
+  <ul class="robots">
+    <li><a href="robots/allow.html">allow</a></li>
+    <li><a href="robots/disallow.html">disallow</a></li>
+  </ul>
+  <ul class="noindex">
+    <li><a href="noindex/follow.html" rel="follow">follow</a></li>
+    <li><a href="noindex/nofollow.html" rel="nofollow">nofollow</a></li>
+  </ul>
+  <ul class="status">
+    <li><a href="/file">file</a></li>
+    <li><a href="/redirect">redirect</a></li>
+    <li><a href="/not_modified">not_modified</a></li>
+    <li><a href="/gone">gone</a></li>
+    <li><a href="/internal_server_error">internal_server_error</a></li>
+  </ul>
+  <ul class="download">
+    <li><a href="/image_file_jp">download(JP)</a></li>
+    <li><a href="/image_file_en">download(EN)</a></li>
+  </ul>
+  <ul class="other-protocol">
+    <li><a href="javascript:void(0)">javascript</a></li>
+    <li><a href="tel:***-****">tel</a></li>
+    <li><a href="mailto:**@**">mailto</a></li>
+    <li><a href="unknown:***">unknown</a></li>
+  </ul>
+  <ul class="malformed-url">
+    <li><a href=" 	%20http://localhost:9292/test/index.html"> 	%20http://localhost:9292/test/index.html</a></li>
+    <li><a href="http://localhost:9292 ">http://localhost:9292 </a></li>
+    <li><a href="http://localhost:9292/test///index.html">http://localhost:9292/test///index.html</a></li>
+    <li><a href="http://http%EF%BC%9A//localhost:9292/test/index.html">http://http%EF%BC%9A//localhost:9292/test/index.html</a></li>
+  </ul>
+  <ul class="non-exsistent-url">
+    <li><a href="http://localhost:9293/test/index.html">http://localhost:9293/test/index.html</a></li>
+  </ul>
+  <script>
+    document.addEventListener("DOMContentLoaded", (e) => {
+      let bodyNode = document.querySelector("body");
+      let ulNode = document.createElement("ul");
+      let liNode = document.createElement("li");
+      let aNode = document.createElement("a");
+      aNode.setAttribute("href", "http://localhost:9292/test/js.html");
+      aNode.innerText = "http://localhost:9292/test/js.html";
+      liNode.appendChild(aNode);
+      ulNode.appendChild(liNode);
+      bodyNode.appendChild(ulNode);
+
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://localhost:9292/json');
+      xhr.onload = (() => {
+        let res = JSON.parse(xhr.response);
+        bodyNode.insertAdjacentHTML("beforeend", res['html']);
+      });
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
